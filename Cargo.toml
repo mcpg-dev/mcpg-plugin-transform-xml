@@ -1,0 +1,29 @@
+[package]
+name = "mcpg-plugin-transform-xml"
+version = "0.1.0-alpha.15"
+license = "Apache-2.0"
+edition = "2024"
+description = """
+XML ⇄ JSON transform plugin for mcpg. `xml_to_json` parses an XML string into a
+JSON tree (attributes as `@name`, text as `#text`, repeated child tags as
+arrays); `json_to_xml` serialises that shape back to an XML string. Usable as a
+global pre/post-dispatch transform and as a pipeline step. An optional JSON
+Pointer targets a sub-field so the rest of the payload is left untouched. Pure
+compute — no I/O.
+"""
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = []
+cdylib-export = []
+static-firstparty = []
+
+[dependencies]
+mcpg-plugin-protocol = { git = "https://github.com/mcpg-dev/mcpg-plugin-protocol", tag = "v0.1.0-beta.13", version = "=0.1.0-beta.13" }
+mcpg-plugin-sdk      = { git = "https://github.com/mcpg-dev/mcpg-plugin-sdk", tag = "v0.1.0-beta.13", version = "=0.1.0-beta.13", features = ["static-firstparty"] }
+serde      = { version = "1", features = ["derive"] }
+serde_json = "1"
+# Pure-Rust XML reader/writer (MIT). No TLS, no system libs.
+quick-xml = "0.39"

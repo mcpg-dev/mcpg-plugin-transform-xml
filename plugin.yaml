@@ -1,0 +1,15 @@
+schema: mcpg.dev/plugin/v1
+id: dev.mcpg.transform.xml
+name: XML Transform
+license: Apache-2.0
+description: |
+  Converts between XML and JSON. `xml_to_json` parses an XML string into a JSON
+  tree (attributes as `@name`, mixed text as `#text`, repeated child tags as
+  arrays, document wrapped in its root tag); `json_to_xml` serialises that shape
+  back to an XML string. Usable as a global pre/post-dispatch transform and as a
+  pipeline step. An optional JSON Pointer targets a sub-field so the rest of the
+  payload is left untouched. Pure compute — no I/O.
+class: transform
+runtime: native-cdylib-v1
+protocol_version: "1.0"
+required_capabilities: []
