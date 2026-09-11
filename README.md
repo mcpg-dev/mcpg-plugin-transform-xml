@@ -35,7 +35,7 @@ plugins:
   - id: dev.mcpg.transform.xml
     class: transform
     source:
-      oci: ghcr.io/mcpg-dev/source-code/plugins/transform-xml:protocol-1
+      oci: ghcr.io/mcpg-dev/plugins/transform-xml
     config:
       direction: xml_to_json
       pointer: /body             # an XML string field carried on the arguments
